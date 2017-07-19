@@ -1,0 +1,449 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../js/libs/material-design-icons/iconfont/MaterialIcons-Regular.eot'); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('../js/libs/material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+    url('../js/libs/material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
+    url('../js/libs/material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    src: url('../js/libs/roboto-fontface/fonts/Roboto-Regular.eot'); /* For IE6-8 */
+    src: local('Roboto'),
+    url('../js/libs/roboto-fontface/fonts/Roboto-Regular.woff2') format('woff2'),
+    url('../js/libs/roboto-fontface/fonts/Roboto-Regular.woff') format('woff'),
+    url('../js/libs/roboto-fontface/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+body {
+    background-color: #EDF0F1;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    height: 100%;
+    text-rendering: optimizelegibility !important;
+}
+
+h1 {
+    color: #009688 !important;
+    font-size: 38px !important;
+    font-weight: normal !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+textarea {
+    padding: 0px !important;
+}
+
+.preloader {
+    background-color: #FFFFFF;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+}
+
+.container-login a {
+    background: #ccc none no-repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    margin: 10px 0;
+    padding: 10px 0 10px 45px;
+}
+
+.container-login .login-dnie {
+    background: #1d0330 url("../img/card.png") no-repeat scroll 83px 10px / auto 50%;
+}
+
+.container-login .login-token {
+    background: #1d0330 url("../img/token.png") no-repeat scroll 65px 10px / auto 50%;
+}
+
+.container-login .login-password {
+    background: #1d0330 url("../img/password.png") no-repeat scroll 50px 9px / auto 50%;
+}
+
+.btn-without-shadow,
+.btn-without-shadow:hover {
+    box-shadow: none;
+}
+
+.progress {
+    margin: 0;
+    position: absolute;
+    z-index: 101;
+}
+
+/********************/
+.signin-title {
+    text-align: center;
+}
+
+.signin-title a {
+    background-color: transparent;
+    color: #009688;
+    font-size: 12px;
+}
+
+.signin-title h1 {
+    width: 100%;
+    display: block;
+    margin: 15px;
+}
+
+.mdl-textfield__label {
+    font-size: 14px;
+}
+
+.mdl-textfield__input {
+    font-size: 14px;
+    padding: 7px 0;
+    color: #555;
+}
+
+.align_right {
+    text-align: right;
+}
+
+.divider-horizontal {
+    border-right: 1px solid #fafafa;
+    margin: 0 15px;
+}
+
+.signin-form {
+    margin-top: 100px;
+    padding-bottom: 70px;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: relative;
+}
+
+.signin-form .mdl-cell--12-col,
+.signin-form .mdl-card__supporting-text,
+.signin-form .mdl-textfield {
+    width: 100%;
+}
+
+.signin-form a {
+    color: #ffffff;
+}
+
+.signin-form .back-squeare {
+    background-color: #009688;
+    bottom: 50px;
+    height: 230px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: -1;
+}
+
+.signin-form .additional-info {
+    margin-top: 21px;
+    text-align: center;
+    width: 100%;
+}
+
+/****************************/
+.logo {
+    height: 64px;
+    line-height: 64px;
+    position: absolute;
+    text-align: center;
+    transition: width 0.25s ease-in-out 0s;
+    width: 220px;
+}
+
+.logo a {
+    color: #fff;
+    font-size: 24px;
+    padding: 5px 10px;
+}
+
+.list-unstyled {
+    display: flex;
+    list-style: outside none none;
+    margin: 0px;
+}
+
+.nav-top {
+    background-color: #ffffff;
+    height: 64px;
+    padding-left: 220px;
+    transition: padding 0.25s ease-in-out 0s;
+    width: 100%;
+}
+
+.nav-top ul li a {
+    background-color: #fff;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    color: #3d4051;
+    display: inline-block;
+    height: auto;
+    line-height: normal;
+    padding: 20px 24px;
+    width: auto;
+}
+
+.nav-top ul li a:hover {
+    background-color: #e7e7e7;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    color: #3d4051;
+    float: left;
+}
+
+.nav-left {
+    float: left;
+}
+
+.nav-right {
+    float: right;
+}
+
+.nav-top .btn-user {
+    padding: 16px 24px;
+}
+
+.nav-top .btn-user .chip {
+    background-color: transparent;
+    color: #3d4051;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.main-container {
+    min-height: 100%;
+    padding-bottom: 0;
+    padding-top: 64px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.main-container .nav-container {
+    background-color: #262b33;
+    box-shadow: 2px 0 2px 0 rgba(0, 0, 0, 0.12);
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    height: 100%;
+    letter-spacing: 0.01em;
+    position: fixed;
+    transition: width 0.25s ease-in-out 0s;
+    width: 220px;
+    z-index: 10;
+}
+
+.main-container .nav-container ul li {
+
+}
+
+.main-container .nav-container i {
+    display: inline;
+    font-size: 18px;
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+}
+
+.main-container .nav-container ul {
+    margin: 0px;
+}
+
+.main-container .nav-container ul li a {
+    background-color: transparent;
+    border-radius: 0;
+    color: rgba(255, 255, 255, 0.5);
+    height: auto;
+    line-height: normal;
+    padding: 10px 15px 16px;
+    text-align: left;
+    text-transform: none;
+    width: 100%;
+}
+
+.main-container .nav-container ul li a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.main-container .nav-container ul li.nav-title {
+    color: #666;
+    font-size: 12px;
+    padding: 15px 15px 10px;
+}
+
+.main-container .nav-container ul li.nav-divider {
+    border-color: #1b1f24;
+    border-style: solid;
+    border-width: 1px;
+    margin: 10px 0 10px 15px;
+}
+
+.main-container .nav-container ul li.active a {
+    color: #fff;
+}
+
+.main-container .content-container {
+    margin-left: 220px;
+    position: absolute;
+    transition: margin-left 0.25s ease-in-out 0s;
+    width: calc(100% - 220px);
+}
+
+.main-container .content-container .container {
+    width: 98%;
+}
+
+.main-container .content-container .container > a.btn-new {
+    bottom: 40px;
+    position: fixed;
+    right: 38px;
+    z-index: 1000;
+}
+
+.main-container .content-container .container .card .card-options {
+    bottom: 10px;
+    position: absolute;
+    right: 15px;
+}
+
+.main-container .content-container .container .card .card-options .btn {
+    margin-left: 10px;
+}
+
+.main-container .content-container .container .card-product .price {
+    bottom: 10px;
+    font-weight: bold;
+    left: 9px;
+    position: absolute;
+}
+
+.main-container .content-container .container .card-product .card-content {
+    font-size: 14px;
+    height: 61px;
+    padding: 10px;
+}
+
+.main-container .content-container .container .card-product a {
+    height: 25px;
+    width: 25px;
+}
+
+.main-container .content-container .container .card-product i {
+    display: block;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.main-container .content-container .container > h4 {
+    color: #009688;
+}
+
+.main-container .content-container .container .form-new {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.main-container .content-container .container .form-new .btn-options button {
+    margin-left: 15px;
+}
+
+.main-container .content-container .container .form-new .select-wrapper {
+    margin-left: 3rem;
+    position: relative;
+    width: calc(100% - 3rem);
+}
+
+.main-container .content-container .container .form-new textarea {
+    max-height: 140px;
+}
+
+.modal .modal-footer a {
+    margin-left: 15px !important;
+}
+
+#dp_user li a {
+    width: 100%;
+}
+
+@media (min-width: 960px) {
+
+}
+
+@media (min-width: 600px) {
+
+}
+
+@media (max-width: 640px) {
+    .logo {
+        top: 0;
+        width: 100%;
+    }
+
+    .nav-top {
+        margin-top: 64px;
+        padding-left: 0;
+    }
+
+    .main-container .nav-container {
+        display: none;
+    }
+
+    .main-container .content-container {
+        margin-left: 0px;
+        margin-top: 64px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+
+}

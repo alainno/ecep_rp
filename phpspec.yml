@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Ecep
+        psr4_prefix: Ecep
+        src_path: app
