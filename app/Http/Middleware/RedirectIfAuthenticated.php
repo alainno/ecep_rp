@@ -35,9 +35,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next)
     {
-        if ($request->session()->has('user')) {
-            return new RedirectResponse(HelperApp::baseUrl('/admin'));
-        }
+//        if ($request->session()->has('user')) {
+//            return new RedirectResponse(HelperApp::baseUrl('/admin'));
+//        }
 
         return $next($request);
     }

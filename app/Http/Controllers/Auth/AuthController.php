@@ -36,7 +36,7 @@ class AuthController extends Controller
         /////////CERTIFICATE DNIe//////////
         $params = [
             'response_type' => 'code',
-            'client_id' => '123456',
+            'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
             'scope' => 'openid profile email address phone',
@@ -49,7 +49,7 @@ class AuthController extends Controller
         /////////CERTIFICATE DNIe AND TOKEN//////////
         $params = [
             'response_type' => 'code',
-            'client_id' => '123456',
+            'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
             'scope' => 'openid profile email address phone',
@@ -62,7 +62,7 @@ class AuthController extends Controller
         /////////USER AND PASSWORD//////////	
         $params = [
             'response_type' => 'code',
-            'client_id' => '123456',
+            'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
             'scope' => 'openid profile email address phone'

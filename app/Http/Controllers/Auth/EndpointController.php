@@ -31,16 +31,12 @@ class EndpointController extends Controller
                 $tokenEndpoint = env('IDP_URL') . '/token';
 
                 $request = $client->createRequest('POST', $tokenEndpoint, [
-                    'auth' => [
-                        '123456',
-                        '123'
-                    ],
                     'body' => [
                         'grant_type' => 'authorization_code',
                         'code' => $code,
                         'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
-                        'client_id' => '123456',
-                        'client_secret' => '123'
+                        'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
+                        'client_secret' => 'VLVa0h24TyDXQQ'
                     ]
                 ]);
 
