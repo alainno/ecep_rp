@@ -24,7 +24,6 @@ class EndpointController extends Controller
             $stateSession = $this->request->session()->get('state');
             $code = $this->request->get('code');
             $state = $this->request->get('state');
-
             if ($stateSession == $state) {
                 $client = new Client();
                 $client->setDefaultOption('verify', false);
@@ -35,13 +34,13 @@ class EndpointController extends Controller
                         'grant_type' => 'authorization_code',
                         'code' => $code,
                         'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
-                        'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
-                        'client_secret' => 'VLVa0h24TyDXQQ'
+                        'client_id' => '123456',
+                        'client_secret' => '123'
                     ]
                 ]);
 
                 $response = json_decode($client->send($request)->getBody()->getContents());
-
+                dd($response);
                 $this->request->session()->put('access_token', $response->access_token);
                 $this->request->session()->put('id_token', $response->id_token);
 

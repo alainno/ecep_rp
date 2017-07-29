@@ -31,15 +31,22 @@ class AuthController extends Controller
 
     public function getLogin()
     {
+//        $issuedAt = new \DateTime();
+//        $expiredAt = (clone $issuedAt)->add(new \DateInterval('P1W'));
+//
+//        var_dump($issuedAt);
+//        dd($expiredAt);
+
         $state = bin2hex(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
 
         /////////CERTIFICATE DNIe//////////
         $params = [
             'response_type' => 'code',
-            'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
+            'client_id' => '123456',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
-            'scope' => 'openid profile email address phone',
+            'prompt' => 'consent',
+            'scope' => 'openid profile email address phone offline_access',
             'acr_values' => 'dnie'
         ];
 
@@ -49,7 +56,7 @@ class AuthController extends Controller
         /////////CERTIFICATE DNIe AND TOKEN//////////
         $params = [
             'response_type' => 'code',
-            'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
+            'client_id' => '123456',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
             'scope' => 'openid profile email address phone',
@@ -62,7 +69,7 @@ class AuthController extends Controller
         /////////USER AND PASSWORD//////////	
         $params = [
             'response_type' => 'code',
-            'client_id' => 'RvTnumo8EVzsrQmPgcqBnA',
+            'client_id' => '123456',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
             'scope' => 'openid profile email address phone'
@@ -95,7 +102,8 @@ class AuthController extends Controller
         ]);
 
         $response = json_decode($client->send($request)->getBody()->getContents(), true);
-        $logoutEndPoint = env('IDP_URL') . "/endsession";
+
+        $logoutEndPoint = env('IDP_URL') . "/logout";
         $params = [
             'post_logout_redirect_uri' => HelperApp::baseUrl('/'),
             'id_token_hint' => $idToken
