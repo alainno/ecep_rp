@@ -5,6 +5,7 @@ use Ecep\Http\Controllers\Controller;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class EndpointController extends Controller
 {
@@ -13,7 +14,6 @@ class EndpointController extends Controller
 
     public function __construct(Request $request)
     {
-
         $this->request = $request;
         $this->error = $this->request->get('error');
     }
@@ -24,6 +24,7 @@ class EndpointController extends Controller
             $stateSession = $this->request->session()->get('state');
             $code = $this->request->get('code');
             $state = $this->request->get('state');
+
             if ($stateSession == $state) {
                 $client = new Client();
                 $client->setDefaultOption('verify', false);
@@ -39,15 +40,17 @@ class EndpointController extends Controller
                     ]
                 ]);
 
-                $response = json_decode($client->send($request)->getBody()->getContents());
-                dd($response);
-                $this->request->session()->put('access_token', $response->access_token);
-                $this->request->session()->put('id_token', $response->id_token);
+                $response = json_decode($client->send($request)->getBody()->getContents(), true);
+                $this->request->session()->put('access_token', $response['access_token']);
+                $this->request->session()->put('id_token', $response['id_token']);
+
+                if (array_key_exists('refresh_token', $response)) {
+                    $this->request->session()->put('refresh_token', $response['refresh_token']);
+                }
 
                 return redirect(HelperApp::baseUrl('/auth/op-login'));
             } else {
-                Log::error('State esperado: ' . $stateSession);
-                Log::error('State recivido: ' . $state);
+                Log::error('Error in state received: ' . $state . ' | sended: ' . $stateSession);
                 return redirect()->to(HelperApp::baseUrl('/'));
             }
         } else {

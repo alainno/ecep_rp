@@ -33,8 +33,8 @@
                     <div class="col s12">
                         <?php
                         $localLabels = ['provider' => 'Proveedor: ', 'dni' => 'DNI: ', 'names' => 'Nombres: ', 'lastnames' => 'Apellidos: ',
-                                'birthdate' => 'Fec. Nac.: ', 'gender' => 'Genero: ', 'country' => 'País: ',
-                                'state' => 'Estado: ', 'city' => 'Lima: ', 'street' => 'Calle: ', 'email' => 'E-mail: '];
+                            'birthdate' => 'Fec. Nac.: ', 'gender' => 'Genero: ', 'country' => 'País: ',
+                            'state' => 'Estado: ', 'city' => 'Lima: ', 'street' => 'Calle: ', 'email' => 'E-mail: '];
                         $data = json_decode(Session::get('data'), true);
                         ?>
                         <h1>BIENVENIDO {{ $data['names'] . ' ' . $data['lastnames'] }}</h1>
@@ -54,10 +54,17 @@
                             </pre>
                         @endif
 
-                        <p>id_token</p>
-                        <pre>
-                        {{ trim(Session::get('id_token')) }}
-                        </pre>
+                        <p>ID TOKEN</p>
+                        <p>
+                            {{ trim(Session::get('id_token')) }}
+                        </p>
+
+                        @if(Session::get('refresh_token'))
+                            <p>REFRESH TOKEN</p>
+                            <p>
+                                {{ trim(Session::get('refresh_token')) }}
+                            </p>
+                        @endif
                     </div>
                 </div>
             </div>

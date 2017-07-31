@@ -31,12 +31,6 @@ class AuthController extends Controller
 
     public function getLogin()
     {
-//        $issuedAt = new \DateTime();
-//        $expiredAt = (clone $issuedAt)->add(new \DateInterval('P1W'));
-//
-//        var_dump($issuedAt);
-//        dd($expiredAt);
-
         $state = bin2hex(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
 
         /////////CERTIFICATE DNIe//////////
@@ -45,8 +39,9 @@ class AuthController extends Controller
             'client_id' => '123456',
             'redirect_uri' => HelperApp::baseUrl('/end-point/op-auth'),
             'state' => $state,
-            'prompt' => 'consent',
-            'scope' => 'openid profile email address phone offline_access',
+//            'prompt' => 'none',
+//            'scope' => 'openid profile demo demo 2',
+            'scope' => 'openid profile email address phone birthdate offline_access',
             'acr_values' => 'dnie'
         ];
 
@@ -87,7 +82,8 @@ class AuthController extends Controller
 
     public function getOpLogin()
     {
-        $accessToken = $this->request->session()->get('access_token');
+        $accessToken = $this->request->session()->pull('access_token');
+        $refreshToken = $this->request->session()->pull('refresh_token');
         $idToken = $this->request->session()->pull('id_token');
 
         $client = new Client();
@@ -102,7 +98,6 @@ class AuthController extends Controller
         ]);
 
         $response = json_decode($client->send($request)->getBody()->getContents(), true);
-
         $logoutEndPoint = env('IDP_URL') . "/logout";
         $params = [
             'post_logout_redirect_uri' => HelperApp::baseUrl('/'),
@@ -122,11 +117,11 @@ class AuthController extends Controller
             'all' => $response
         ];
 
-        $urlReturn = $this->loginProvider($data, $idToken, $idpLogOut);
+        $urlReturn = $this->loginProvider($data, $idToken, $refreshToken, $idpLogOut);
         return redirect($urlReturn);
     }
 
-    public function loginProvider($data, $idToken, $idpLogOut = null)
+    public function loginProvider($data, $idToken, $refreshToken, $idpLogOut = null)
     {
         Session::flush();
 
@@ -134,6 +129,10 @@ class AuthController extends Controller
         $this->request->session()->put('names', $data['names']);
         $this->request->session()->put('data', json_encode($data));
         $this->request->session()->put('id_token', $idToken);
+
+        if ($refreshToken) {
+            $this->request->session()->put('refresh_token', $refreshToken);
+        }
 
         if ($idpLogOut) {
             $this->request->session()->put('idpLogout', $idpLogOut);
